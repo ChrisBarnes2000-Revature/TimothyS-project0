@@ -22,16 +22,9 @@ print('Hello and welcome to your medication reminder!')
 current_day = str(input('Please type the current day of the week: '))
 current_time = input(
     'Please enter the current time in 24-hour format: ')
-print('Now searching for prescribed medications on ' +
-      current_day + ' at ' + current_time)
 
 # Searching for medications to be taken at inputted day and time
 for day in days_of_the_week:
     if current_day == day:
         print('Here are your prescribed medications for ' +
               day + ' at ' + current_time + ":")
-        # if current_day == 'Monday':
-        #     if current_time >= 0800:
-        #         print(userMedsMonday.get(0800))
-        #     elif current_time >= 2000:
-        #         print(userMedsMonday.get(2000))
