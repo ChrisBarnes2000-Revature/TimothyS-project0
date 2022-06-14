@@ -31,16 +31,18 @@ def get_meds(day, time):
     for x in days_of_the_week:
         if day == x:
             if x == 'Monday':
-                return [m for t, m in monday_meds.items() if int(t) <= int(time)]
+                return [m for t, m in monday_meds.items() if (int(time) - 500) < int(t) <= int(time)]
             elif x == 'Tuesday':
-                return [m for t, m in tuesday_meds.items() if int(t) <= int(time)]
+                return [m for t, m in tuesday_meds.items() if (int(time) - 500) < int(t) <= int(time)]
             elif x == 'Wednesday':
-                return [m for t, m in wednesday_meds.items() if int(t) <= int(time)]
+                return [m for t, m in wednesday_meds.items() if (int(time) - 500) < int(t) <= int(time)]
             elif x == 'Thursday':
-                return [m for t, m in thursday_meds.items() if int(t) <= int(time)]
+                return [m for t, m in thursday_meds.items() if (int(time) - 500) < int(t) <= int(time)]
             elif x == 'Friday':
-                return [m for t, m in friday_meds.items() if int(t) <= int(time)]
+                return [m for t, m in friday_meds.items() if (int(time) - 500) < int(t) <= int(time)]
             elif x == 'Saturday':
-                return [m for t, m in saturday_meds.items() if int(t) <= int(time)]
+                return [m for t, m in saturday_meds.items() if (int(time) - 500) < int(t) <= int(time)]
             elif x == 'Sunday':
-                return [m for t, m in sunday_meds.items() if int(t) <= int(time)]
+                return [m for t, m in sunday_meds.items() if (int(time) - 500) < int(t) <= int(time)]
+            else:
+                return 'None'
