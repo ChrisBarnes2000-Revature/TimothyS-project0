@@ -4,20 +4,13 @@ import datetime
 from operator import itemgetter
 from Medications import get_meds
 
-# dicts holding medications and prescribed date & time (for now until creating separate module)
-# userMedsMonday = {0800: 'Pill A', 2000: 'Pill B', 0800: 'Pill C', 2000: 'Pill D'}
-# userMedsTuesday = {0800: 'Pill E', 1800: 'Pill D'}
-# userMedsWednesday = {0800: 'Pill A', 2000: 'Pill B', 0800: 'Pill C', 2000: 'Pill D'}
-# userMedsThursday = {0800: 'Pill E', 1800: 'Pill D'}
-# userMedsFriday = {0800: 'Pill A', 2000: 'Pill B', 0800: 'Pill C', 2000: 'Pill D'}
-
 # Medication reminder program by Timothy S.
 # Purpose is to remind user of what medications to take at specific time on the day of the week
 
 days_of_the_week = ['Monday', 'Tuesday', 'Wednesday',
                     'Thursday', 'Friday', 'Saturday', 'Sunday']
 
-# Start of programMon
+# Start of program
 print('Hello and welcome to your medication reminder!')
 
 # Input day of the week and current time
