@@ -1,5 +1,3 @@
-from calendar import week
-from calendar import timegm
 import datetime
 from operator import itemgetter
 from Medications import get_meds
