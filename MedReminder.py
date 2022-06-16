@@ -6,26 +6,42 @@ from operator import itemgetter
 import Medications
 import datetime
 
+
+def get_current_time():
+    acceptable_time = [0000, 2359]
+    try:
+        current_time = str(
+            input('Please enter the current time in 24-hour format: '))
+        if (current_time >= acceptable_time[1]) and (current_time <= acceptable_time[0]):
+            raise ValueError('Not An Acceptable Time In 24 Hours')
+    except (ValueError, IndexError):
+        exit('Could not complete request.')
+    return current_time
+
+
+def get_current_day():
+    try:
+        current_day = str(input('Please type the current day of the week: '))
+        if current_day.upper() not in Medications.days_of_week:
+            raise ValueError('Not An Acceptable Day Of The Week')
+    except (ValueError, IndexError):
+        exit('Could not complete request.')
+    return current_day
+
+
 if __name__ == '__main__':
     # Start of program
     print('Hello and welcome to your medication reminder!')
 
     # Input day of the week and current time
-    current_day = str(input('Please type the current day of the week: '))
-    current_time = str(
-        input('Please enter the current time in 24-hour format: '))
+    current_day = get_current_day()
+    current_time = get_current_time()
 
-    Medications.get_monday_meds(MedList)
-    print("\n-----------\n")
-    Medications.get_all_noon_and_midnight_meds(MedList)
-    print("\n-----------\n")
     # Searching for medications to be taken at inputted day and time
     current_meds = Medications.get_meds(MedList, current_day, current_time)
     print(
         f'Here are your prescribed medications for {current_day} at {current_time}:\n {current_meds}')
-
-    # for day in days_of_the_week:
-    #     if current_day == day:
-    #         print('Here are your prescribed medications for ' +
-    #               day + ' at ' + current_time + ":")
-    #         print(get_meds(current_day, current_time))
+    print("\n-----------\n")
+    Medications.get_monday_meds(MedList)
+    print("\n-----------\n")
+    Medications.get_all_noon_and_midnight_meds(MedList)
