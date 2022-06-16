@@ -10,13 +10,12 @@ import datetime
 def get_current_time():
     acceptable_time = [0000, 2359]
     try:
-        current_time = str(
-            input('Please enter the current time in 24-hour format: '))
+        current_time = int(input('Please enter the current time in 24-hour format: '))
         if (current_time >= acceptable_time[1]) and (current_time <= acceptable_time[0]):
             raise ValueError('Not An Acceptable Time In 24 Hours')
     except (ValueError, IndexError):
         exit('Could not complete request.')
-    return current_time
+    return str(current_time)
 
 
 def get_current_day():
@@ -26,7 +25,7 @@ def get_current_day():
             raise ValueError('Not An Acceptable Day Of The Week')
     except (ValueError, IndexError):
         exit('Could not complete request.')
-    return current_day
+    return current_day.upper()
 
 
 if __name__ == '__main__':
