@@ -64,6 +64,16 @@ def get_current_day():
     return current_day
 
 
+def get_current_time_sub_12(time):
+    if time[0] == '0':
+        return time
+    elif int(time) < 1000:
+        time = '0' + time
+        return time
+    else:
+        return time
+
+
 if __name__ == '__main__':
     # Start of program
     print('Hello and welcome to your medication reminder!')
@@ -72,11 +82,27 @@ if __name__ == '__main__':
     current_day = get_current_day()
     current_time = get_current_time()
 
+    current_time_plus_1 = str(int(current_time)+100)
+    current_time_minus_1 = str(int(current_time)-100)
+    current_time_plus_2 = str(int(current_time)+200)
+    current_time_minus_2 = str(int(current_time)-200)
+
     # Searching for medications to be taken at inputted day and time
-    current_meds = Medications.get_meds(MedList, current_day, current_time)
-    print(
-        f'Here are your prescribed medications for {current_day} at {current_time}:\n {current_meds}')
-    print("\n-----------\n")
-    Medications.get_monday_meds(MedList)
-    print("\n-----------\n")
-    Medications.get_all_noon_and_midnight_meds(MedList)
+    current_meds_plus_2 = Medications.get_meds(
+        MedList, current_day, get_current_time_sub_12(current_time_plus_2))
+    current_meds_plus_1 = Medications.get_meds(
+        MedList, current_day, get_current_time_sub_12(current_time_plus_1))
+    current_meds = Medications.get_meds(
+        MedList, current_day, get_current_time_sub_12(current_time))
+    current_meds_minus_1 = Medications.get_meds(
+        MedList, current_day, get_current_time_sub_12(current_time_minus_1))
+    current_meds_minus_2 = Medications.get_meds(
+        MedList, current_day, get_current_time_sub_12(current_time_minus_2))
+
+    print('Here are your prescribed medications for ' +
+          current_day + ' at ' + current_time + ':')
+    print(current_meds_minus_2)
+    print(current_meds_minus_1)
+    print(current_meds)
+    print(current_meds_plus_1)
+    print(current_meds_plus_2)
