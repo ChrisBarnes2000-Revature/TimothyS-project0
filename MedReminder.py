@@ -8,7 +8,7 @@ import datetime
 
 
 def get_current_time():
-    prompt = 'Please enter the current time in 24-hour format: '
+    prompt = 'Please enter the current time in 24-hour format (0000-2359): '
     prompt2 = 'Please Use 24 Hour Time Format (0000 - 2359)'
 
     response = input(prompt)
@@ -64,10 +64,14 @@ def get_current_day():
     return current_day
 
 
+def display_time(time):
+    return time
+
+
 def get_current_time_sub_12(time):
     if time[0] == '0':
         return time
-    elif int(time) < 1000:
+    if int(time) < 1000:
         time = '0' + time
         return time
     else:
