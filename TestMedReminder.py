@@ -3,6 +3,7 @@ import unittest
 
 import Medications
 import MedReminder
+from Clients.SampleClientMedList import MedList as test_meds_0
 from Clients.TestClients.Grandma import Grandma_MedList as test_meds_1
 from Clients.TestClients.Father import Father_MedList as test_meds_2
 from Clients.TestClients.Lizzy import Lizzy_MedList as test_meds_3
@@ -264,6 +265,33 @@ class TestMedReminder(unittest.TestCase):
                     { "Iron": "More Info To Come", "Zinc": "More Info To Come" }
             """
             print("Med List Test Method: Get Current Meds \t\t| Started")
+            today = "MONDAY"  # random.choice(Utils["days_of_week"])
+            hour = "1200"  # random.choice(Utils["hours_24_clock"])
+            minute = "30"  # random.randint(0, 60)
+
+            # Test Case 0 -- Sample Client
+            expexted_test_data = test_meds_0[today][hour][minute] if minute != '' else test_meds_0[today][hour]
+            our_method_results = Medications.get_current_meds(test_meds_0, today, hour, minute)
+            error_message = f'Error Result are not what we wantExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
+
+            # Test Case 1 -- Grandma
+            expexted_test_data = test_meds_1[today][hour][minute] if minute != '' else test_meds_1[today][hour]
+            our_method_results = Medications.get_current_meds(test_meds_1, today, hour, minute)
+            error_message = f'Error Result are not what we wantExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
+
+            # Test Case 2 -- Father
+            expexted_test_data = test_meds_2[today][hour][minute] if minute != '' else test_meds_2[today][hour]
+            our_method_results = Medications.get_current_meds(test_meds_2, today, hour, minute)
+            error_message = f'Error Result are not what we wantExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
+
+            # Test Case 3 -- Lizzy
+            expexted_test_data = test_meds_3[today][hour][minute] if minute != '' else test_meds_3[today][hour]
+            our_method_results = Medications.get_current_meds(test_meds_3, today, hour, minute)
+            error_message = f'Error Result are not what we wantExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
             print("Med List Test Method: Get Current Meds \t\t| Completed\n")
 
         def test_get_meds_before(self):
