@@ -2,6 +2,23 @@ from Clients.SampleClientMedList import MedList
 from Utils import Utils
 
 
+def get_patient(name: str):
+    """
+    Get the entire medlist of the given patient
+    Params:
+        name (str): A string representing the name of the patient in query
+    Return:
+        meds (dict): A dict of dicts containg the users medication used as --> meds[day][hour][minute] --> {"Multi-Vitamins": "More Info To Come"},
+    """
+    if name == "Grandma-Test":
+        from Clients.TestClients.Grandma import Grandma_MedList as MedList
+    elif name == "Father-Test":
+        from Clients.TestClients.Father import Father_MedList as MedList
+    elif name == "Lizzy-Test":
+        from Clients.TestClients.Lizzy import Lizzy_MedList as MedList
+    return MedList
+
+
 def get_meds_today(medlist: dict, day: str):
     """
     Get the patient's prescribed medications on a given day & time
