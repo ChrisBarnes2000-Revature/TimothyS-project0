@@ -1,3 +1,4 @@
+import random
 import unittest
 
 import Medications
@@ -5,6 +6,7 @@ import MedReminder
 from Clients.TestClients.Grandma import Grandma_MedList as test_meds_1
 from Clients.TestClients.Father import Father_MedList as test_meds_2
 from Clients.TestClients.Lizzy import Lizzy_MedList as test_meds_3
+from Utils import Utils
 
 
 class TestMedReminder(unittest.TestCase):
@@ -194,6 +196,29 @@ class TestMedReminder(unittest.TestCase):
             Return:
                 meds    (list): A List containing the sub dicts of time of the given day
             """
+            print("Med List Test: Get Meds Today \t\t\t| Started")
+            today = random.choice(Utils["days_of_week"])
+
+            # Test Case 1 -- Grandma
+            expexted_test_data = test_meds_1[today]
+            medlist = Medications.get_patient(name="Grandma-Test")
+            our_method_results = Medications.get_meds_today(medlist, today)
+            error_message = f'Error Result are not what we wantExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
+
+            # Test Case 2 -- Father
+            expexted_test_data = test_meds_2[today]
+            medlist = Medications.get_patient(name="Father-Test")
+            our_method_results = Medications.get_meds_today(medlist, today)
+            error_message = f'Error Result are not what we wantExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
+
+            # Test Case 3 -- Lizzy
+            expexted_test_data = test_meds_3[today]
+            medlist = Medications.get_patient(name="Lizzy-Test")
+            our_method_results = Medications.get_meds_today(medlist, today)
+            error_message = f'Error Result are not what we wantExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
             print("Med List Test Method: Get Meds Today \t\t| Completed")
 
         def test_get_meds_hourly(self):
