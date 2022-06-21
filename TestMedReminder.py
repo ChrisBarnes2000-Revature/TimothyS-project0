@@ -7,7 +7,7 @@ import Medications
 import MedReminder
 
 
-class TestEndcodeImage(unittest.TestCase):
+class TestMedReminder(unittest.TestCase):
 
     """ Example User Test Cases
         * Grandma needs to take her meds
@@ -105,8 +105,60 @@ class TestEndcodeImage(unittest.TestCase):
     # self.assertDictEqual(Medications.get_current_meds(day, hour, minute, expected_output)
 
     # --------------------------- #
-    pass
+    class TestUserInput(unittest.TestCase):
 
+        def test_get_current_day(self):
+            """
+            Summary Line
+            Extra Details
+            Params:
+            Return:
+            """
+            pass
+
+        def test_get_current_time(self):
+            """
+            Summary Line
+            Extra Details
+            Params:
+            Return:
+            """
+            pass
+
+    def test_XXX(self):
+        """
+        Summary Line
+        Extra Details
+        Params:
+        Return:
+        """
+        pass
+
+    def test_XXX(self):
+        """
+        Summary Line
+        Extra Details
+        Params:
+        Return:
+        """
+        pass
+
+
+# Example run:
+# $ python3 MedReminder.py
+# > Hello and welcome to your medication reminder!
+# > Please type the current day of the week:                      $ Monday
+# > Please enter the current time in 24-hour format(0000-2359):  $ 1230
+
+# Output should be:
+# > Here's your meds for Monday at 1430 meds:{1230:{},1430: {"Multi-Vitamins": "More Info To Come"},1630: {}}
+# or
+# > Here's your meds for Monday at 1430
+# > meds: {
+# >   1030: {},
+# >   1230: {"Multi-Vitamins": "More Info To Come"},
+# >   1430: {}
+# > }
 
 if __name__ == '__main__':
     unittest.main()
