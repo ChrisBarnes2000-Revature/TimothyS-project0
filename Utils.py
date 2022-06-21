@@ -1,4 +1,8 @@
+import json
+import sys
 from datetime import datetime
+from random import randint
+
 # https://strftime.org/
 
 
@@ -65,12 +69,37 @@ def convert_time_24hr(time_in_12hr: str):
     return datetime.strptime(time_in_12hr, "%H:%M").strftime("%I:%M %H")
 
 
+def create_new_client(name: str):
+    name = name.capitalize()
+    medlist = {}
+    # for day in ["MONDAY", "TUSEDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]:
+    for day in Utils["days_of_week"]:
+        medlist[day] = {}
+        # for hour in ["0000", "0100", "0200", "0300", "0400", "0500", "0600", "0700", "0800", "0900", "1000", "1100", "1200",
+        #              "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300"]:
+        for hour in Utils["hours_24_clock"]:
+            medlist[day][hour] = {}
+            for min in range(0, 60):
+                medlist[day][hour][min] = {"Pill_Name": "More Info To Come"}
+
+    # medlist = {day for day in Utils["days_of_week"]}
+    # medlist[day] = {hour for hour in Utils["hours_24_clock"]}
+    # medlist[day][hour] = {min for min in range(0, 60)}
+    # medlist[day][hour][min] = {}
+
+    sys.stdout = open(f'{name}.py', 'w')
+    print(f'{name}_MedList = {json.dumps(medlist, indent=2)}')
+    sys.stdout.close()
+
+
 Utils = {
     "days_of_week": ["MONDAY", "TUSEDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"],
-
+    "hours_24_clock":
+        ["0000", "0100", "0200", "0300", "0400", "0500", "0600", "0700", "0800", "0900", "1000", "1100", "1200",
+         "1100", "1200", "1300", "1400", "1500", "1600", "1700", "1800", "1900", "2000", "2100", "2200", "2300"],
     "get_current_day": get_current_day,
     "get_current_time": get_current_time,
-
     "convert_time_12hr": convert_time_12hr,
     "convert_time_24hr": convert_time_24hr,
+    "create_new_client": create_new_client,
 }
