@@ -198,10 +198,22 @@ class TestMedReminder(unittest.TestCase):
 
         def test_get_meds_window(self):
             """
-            Summary Line
-            Extra Details
+            Because medications can still be taken "2 hours" before or after the planned time,
+                * we want it to display a dict containing the range of time "2 hours" before through "2 hours" after the inputted time
+                * we want it to display the "exact" time -- {hour}:{minute}
+            Example output is expected to be
+                Here's your meds for Monday at 1430 meds:{1230:{},1430: {"Multi-Vitamins": "More Info To Come"},1630: {}}
+                or
+                > Here's your meds for Monday at 1430
+                > meds: {
+                >   1030: {},
+                >   1230: {"Multi-Vitamins": "More Info To Come"},
+                >   1430: {}
+                > }
             Params:
+                time (str): string representing the time of day the user would like to check for medication at
             Return:
+                meds (dict): a dict containing the sub dicts within the time range of (XX time) before & after current time
             """
             pass
 
@@ -223,22 +235,6 @@ class TestMedReminder(unittest.TestCase):
         """
         pass
 
-
-# Example run:
-# $ python3 MedReminder.py
-# > Hello and welcome to your medication reminder!
-# > Please type the current day of the week:                      $ Monday
-# > Please enter the current time in 24-hour format(0000-2359):  $ 1230
-
-# Output should be:
-# > Here's your meds for Monday at 1430 meds:{1230:{},1430: {"Multi-Vitamins": "More Info To Come"},1630: {}}
-# or
-# > Here's your meds for Monday at 1430
-# > meds: {
-# >   1030: {},
-# >   1230: {"Multi-Vitamins": "More Info To Come"},
-# >   1430: {}
-# > }
 
 if __name__ == '__main__':
     unittest.main()
