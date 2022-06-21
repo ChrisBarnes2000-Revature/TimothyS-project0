@@ -1,10 +1,11 @@
 import unittest
+
+import Medications
+import MedReminder
 from Clients.SampleClientMedList import MedList
 from Clients.TestClients.Father import MedList as test_meds_1
 from Clients.TestClients.Grandma import MedList as test_meds_2
 from Clients.TestClients.Lizzy import MedList as test_meds_3
-import Medications
-import MedReminder
 
 
 class TestMedReminder(unittest.TestCase):
