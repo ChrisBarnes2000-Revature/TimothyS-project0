@@ -137,7 +137,8 @@ class TestMedReminder(unittest.TestCase):
             Return:
                 day (str): ALL CAPS Version of the day provided by the user
             """
-            print("User Input Test Method: Get Current Day \t| Completed")
+            print("User Input Test Method: Get Current Day \t| Started")
+            print("User Input Test Method: Get Current Day \t| Completed\n")
 
         def test_get_current_time(self):
             """
@@ -149,7 +150,8 @@ class TestMedReminder(unittest.TestCase):
             Return:
                 time (str): string version of verified number in range of the 24 hour clock
             """
-            print("User Input Test Method: Get Current Time \t| Completed")
+            print("User Input Test Method: Get Current Time \t| Started")
+            print("User Input Test Method: Get Current Time \t| Completed\n")
 
     class TestMedList(unittest.TestCase):
 
@@ -157,7 +159,7 @@ class TestMedReminder(unittest.TestCase):
 
         def test_should_do_something(self):
             self.assertTrue(True)
-            print("Med List Test Method: Sample \t\t\t| Completed")
+            print("Med List Test Method: Sample \t\t\t| Completed\n")
 
         def test_get_patient(self):
             """
@@ -185,7 +187,7 @@ class TestMedReminder(unittest.TestCase):
             our_method_results = Medications.get_patient(name="Lizzy-Test")
             error_message = f'Error Result are not what we want\nExpected: {expexted_test_data} | Actual: {our_method_results}'
             self.assertDictEqual(our_method_results, expexted_test_data, error_message)
-            print("Med List Test Method: Get Patient \t\t| Completed")
+            print("Med List Test Method: Get Patient \t\t| Completed\n")
 
         def test_get_meds_today(self):
             """
@@ -219,7 +221,7 @@ class TestMedReminder(unittest.TestCase):
             our_method_results = Medications.get_meds_today(medlist, today)
             error_message = f'Error Result are not what we wantExpected: {expexted_test_data} | Actual: {our_method_results}'
             self.assertDictEqual(our_method_results, expexted_test_data, error_message)
-            print("Med List Test Method: Get Meds Today \t\t| Completed")
+            print("Med List Test Method: Get Meds Today \t\t| Completed\n")
 
         def test_get_meds_hourly(self):
             """
@@ -232,7 +234,8 @@ class TestMedReminder(unittest.TestCase):
                     i.e if at midnight (0000) you had to take 3 pills it may look like:
                     { "Multi-Vitamins": "More Info To Come", "Iron": "More Info To Come", "Zinc": "More Info To Come" }
             """
-            print("Med List Test Method: Get Med Hourly \t\t| Completed")
+            print("Med List Test Method: Get Med Hourly \t\t| Started")
+            print("Med List Test Method: Get Med Hourly \t\t| Completed\n")
 
         def test_get_meds_by_minute(self):
             """
@@ -245,7 +248,8 @@ class TestMedReminder(unittest.TestCase):
                     i.e if at lunch (1030 or 1230) you had to take 1 pill it may look like:
                     { "Multi-Vitamins": "More Info To Come" }
             """
-            print("Med List Test Method: Get Meds By Minute \t| Completed")
+            print("Med List Test Method: Get Meds By Minute \t| Started")
+            print("Med List Test Method: Get Meds By Minute \t| Completed\n")
 
         def test_get_current_meds(self):
             """
@@ -259,7 +263,8 @@ class TestMedReminder(unittest.TestCase):
                     i.e if at dinner (1730 or 1800) you had to take 2 pill it may look like:
                     { "Iron": "More Info To Come", "Zinc": "More Info To Come" }
             """
-            print("Med List Test Method: Get Current Meds \t\t| Completed")
+            print("Med List Test Method: Get Current Meds \t\t| Started")
+            print("Med List Test Method: Get Current Meds \t\t| Completed\n")
 
         def test_get_meds_before(self):
             """
@@ -271,7 +276,8 @@ class TestMedReminder(unittest.TestCase):
             Return:
                 meds    (dict): A dict containing the meds to take in the given time frame (prior to current set)
             """
-            print("Med List Test Method: Get Meds Before \t\t| Completed")
+            print("Med List Test Method: Get Meds Before \t\t| Started")
+            print("Med List Test Method: Get Meds Before \t\t| Completed\n")
 
         def test_get_meds_after(self):
             """
@@ -283,7 +289,8 @@ class TestMedReminder(unittest.TestCase):
             Return:
                 meds    (dict): A dict containing the meds to take in the given time frame (after current set)
             """
-            print("Med List Test Method: Get Meds After \t\t| Completed")
+            print("Med List Test Method: Get Meds After \t\t| Started")
+            print("Med List Test Method: Get Meds After \t\t| Completed\n")
 
         def test_get_meds_window(self):
             """
@@ -304,7 +311,8 @@ class TestMedReminder(unittest.TestCase):
             Return:
                 meds (dict): a dict containing the sub dicts within the time range of (XX time) before & after current time
             """
-            print("Med List Test Method: Get Meds Window \t\t| Completed")
+            print("Med List Test Method: Get Meds Window \t\t| Started")
+            print("Med List Test Method: Get Meds Window \t\t| Completed\n")
 
     def test_XXX(self):
         """
@@ -327,6 +335,7 @@ class TestMedReminder(unittest.TestCase):
     def test_inner_test_class(self):
         suite_1 = unittest.defaultTestLoader.loadTestsFromTestCase(self.TestUserInput)
         suite_2 = unittest.defaultTestLoader.loadTestsFromTestCase(self.TestMedList)
+        print()
         unittest.TextTestRunner().run(suite_1)
         unittest.TextTestRunner().run(suite_2)
 
