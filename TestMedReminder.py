@@ -175,10 +175,14 @@ class TestMedReminder(unittest.TestCase):
 
         def test_get_meds_by_minute(self):
             """
-            Summary Line
-            Extra Details
+            Test we get the correct list of meds from the given medlist provided a day to index
             Params:
-            Return:
+                medlist      (dict): A dict of dicts containg the users medication used as --> meds[day][hour][minute] --> {"Multi-Vitamins": "More Info To Come"},
+                day           (str): A string representing the day of the week the user would like to check for medication on
+            Yield:
+                curr_min_meds (list): A dic containing the meds to take in the given minute
+                    i.e if at lunch (1030 or 1230) you had to take 1 pill it may look like:
+                    { "Multi-Vitamins": "More Info To Come" }
             """
             pass
 
