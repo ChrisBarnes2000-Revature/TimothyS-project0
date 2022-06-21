@@ -1,3 +1,7 @@
+from datetime import datetime
+# https://strftime.org/
+
+
 def get_current_time():
     prompt = 'Please enter the current time in 24-hour format (0000-2359): '
     prompt2 = 'Please Use 24 Hour Time Format (0000 - 2359)'
@@ -53,12 +57,12 @@ def get_current_day():
     return current_day
 
 
-def convert_time_12hr():
-    pass
+def convert_time_12hr(time_in_24hr: str):
+    return datetime.strptime(time_in_24hr, "%H:%M").strftime("%I:%M %p")
 
 
-def convert_time_24hr():
-    pass
+def convert_time_24hr(time_in_12hr: str):
+    return datetime.strptime(time_in_12hr, "%H:%M").strftime("%I:%M %H")
 
 
 Utils = {
