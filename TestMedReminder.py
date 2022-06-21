@@ -202,19 +202,25 @@ class TestMedReminder(unittest.TestCase):
 
         def test_get_meds_before(self):
             """
-            Summary Line
-            Extra Details
+            Test we get the correct list of meds from the given medlist provided a day & time (hour, minute) & offset to index
             Params:
+                day      (str): A string representing the day of the week the user would like to check for medication on
+                time    (list): [hour: (int), minute, (int)] - Integer representing the hour & minute in the day at which the user needs or expects to take meds
+                offset   (int): An integer representing the number of hours to offset our acceptable list of current meds
             Return:
+                meds (list): A dic containing the meds to take in the given time frame (prior to current set)
             """
             pass
 
         def test_get_meds_after(self):
             """
-            Summary Line
-            Extra Details
+            Test we get the correct list of meds from the given medlist provided a day & time (hour, minute) & offset to index
             Params:
+                day      (str): A string representing the day of the week the user would like to check for medication on
+                time    (list): [hour: (int), minute, (int)] - Integer representing the hour & minute in the day at which the user needs or expects to take meds
+                offset   (int): An integer representing the number of hours to offset our acceptable list of current meds
             Return:
+                meds (list): A dic containing the meds to take in the given time frame (after current set)
             """
             pass
 
