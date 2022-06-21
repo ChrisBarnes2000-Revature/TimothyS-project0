@@ -45,9 +45,7 @@ def get_current_time():
     while not isValid(response):
         response = input(f'Try again: {prompt2}')
 
-    # Return str(response) If You Want To Have Specification Over Every Minute Rather Than Hours
-    hour = str(response)[:2]
-    return hour + "00"
+    return str(response)
 
 
 def get_current_day():

@@ -1,7 +1,3 @@
-from random import random
-
-import Medications
-from Clients.SampleClientMedList import MedList
 from Utils import Utils
 
 
@@ -19,6 +15,8 @@ def get_patient(name: str):
         from Clients.TestClients.Father import Father_MedList as MedList
     elif name == "Lizzy-Test":
         from Clients.TestClients.Lizzy import Lizzy_MedList as MedList
+    else:
+        from Clients.SampleClientMedList import MedList
     return MedList
 
 
@@ -50,7 +48,7 @@ def get_meds_by_minute(today: str):
         yield current_minute_meds
 
 
-def get_current_meds(medlist: list, today: str, hour: int, minute: int = None):
+def get_current_meds(medlist: list, today: str, hour: str, minute: str = None):
     """
     Get the patient's prescribed medications on a given day & time
     Params:
@@ -60,30 +58,25 @@ def get_current_meds(medlist: list, today: str, hour: int, minute: int = None):
     Return:
         meds   (dict): A dict containing the meds to take in the given minute
     """
-    return get_meds_today(medlist, today)[hour][minute] if minute != None else get_meds_today(medlist, today)[hour]
+    if minute != None:
+        return get_meds_today(medlist, today)[str(hour)][str(int(minute))]
+    else:
+        return get_meds_today(medlist, today)[str(hour)]
 
 
-# hour = str(random.randint(0, 24)).ljust(4, "0")
-# minute = "00"  # str(random.randint(0, 60)).ljust(2, "0")
-
-# hour = "0"+str(hour)+str(minute) if hour < 10 else str(hour)+minute
-
-
-def get_meds_before(current: list, offset: int):
-    before_hrs = current[1] - offset
-    before_min = current[2] - offset
-    before_meds = get_current_meds(current[0], before_hrs, before_min)
-    return before_meds
+def get_meds_before(medlist: list, current: list, offset: list):
+    before_hrs = int(current[1]) - int(offset[0])
+    before_min = int(current[2]) - int(offset[1])
+    return get_current_meds(medlist, current[0], before_hrs, before_min)
 
 
-def get_meds_after(current: list, offset: int):
-    after_hrs = current[1] + offset
-    after_min = current[2] + offset
-    after_meds = get_current_meds(current[0], after_hrs, after_min)
-    return after_meds
+def get_meds_after(medlist: list, current: list, offset: list):
+    after_hrs = int(current[1]) + int(offset[0])
+    after_min = int(current[2]) + int(offset[1])
+    return get_current_meds(medlist, current[0], after_hrs, after_min)
 
 
-def get_meds_window(current: list, offset: int):
+def get_meds_window(medlist: list, current: list, offset: list):
     # def get_meds_window(MedList, current_day, current_time, offset="0200"):
     """
     Because medications can still be taken "2 hours" before or after the planned time,
@@ -121,9 +114,9 @@ def get_meds_window(current: list, offset: int):
     #     { Medications.get_meds(MedList, current_day, Utils["get_current_time_sub_12"](current_time_plus_2)) }
     # ''')
     # current = ["day", "hour", "minute"]
-    before__meds = get_current_meds(current, offset)
-    current_meds = get_current_meds(current[0], current[1], current[2])
-    after___meds = get_current_meds(current, offset)
+    before__meds = get_meds_before(medlist, current, offset)
+    current_meds = get_current_meds(medlist, current[0], current[1], current[2])
+    after___meds = get_meds_after(medlist, current, offset)
     return before__meds, current_meds, after___meds
 
 

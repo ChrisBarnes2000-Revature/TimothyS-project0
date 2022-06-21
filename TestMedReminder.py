@@ -288,8 +288,8 @@ class TestMedReminder(unittest.TestCase):
             Test we get the correct list of meds from the given medlist provided a day & time (hour, minute) to index
             Params:
                 day     (str): A string representing the day of the week the user would like to check for medication on
-                hour    (int): An integer representing the hour in the day at which the user needs or expects to take meds
-                minute  (int): An integer representing the minute in the hour at which ...
+                hour    (str): An string representing the hour in the day at which the user needs or expects to take meds
+                minute  (str): An string representing the minute in the hour at which ...
             Return:
                 meds   (dict): A dict containing the meds to take in the given minute
                     i.e if at dinner (1730 or 1800) you had to take 2 pill it may look like:
@@ -330,8 +330,8 @@ class TestMedReminder(unittest.TestCase):
             Test we get the correct list of meds from the given medlist provided a day & time (hour, minute) & offset to index
             Params:
                 day      (str): A string representing the day of the week the user would like to check for medication on
-                time    (list): [hour: (int), minute, (int)] - Integer representing the hour & minute in the day at which the user needs or expects to take meds
-                offset   (int): An integer representing the number of hours to offset our acceptable list of current meds
+                time    (list): [hour: (int), minute, (int)] - Integers representing the hour & minute in the day at which the user needs or expects to take meds
+                offset  (list): [hour: (int), minute, (int)] - Integers representing the number of hours & minutes to offset our acceptable list of current meds
             Return:
                 meds    (dict): A dict containing the meds to take in the given time frame (prior to current set)
             """
@@ -375,8 +375,8 @@ class TestMedReminder(unittest.TestCase):
             Test we get the correct list of meds from the given medlist provided a day & time (hour, minute) & offset to index
             Params:
                 day      (str): A string representing the day of the week the user would like to check for medication on
-                time    (list): [hour: (int), minute, (int)] - Integer representing the hour & minute in the day at which the user needs or expects to take meds
-                offset   (int): An integer representing the number of hours to offset our acceptable list of current meds
+                time    (list): [hour: (int), minute, (int)] - Integers representing the hour & minute in the day at which the user needs or expects to take meds
+                offset  (list): [hour: (int), minute, (int)] - Integers representing the number of hours & minutes to offset our acceptable list of current meds
             Return:
                 meds    (dict): A dict containing the meds to take in the given time frame (after current set)
             """
