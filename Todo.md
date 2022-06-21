@@ -18,11 +18,11 @@
       - [ ] `test_get_meds_window`
 
   3. Add Utils Test Methods
-      - [ ] `days_of_week`
-      - [ ] `get_current_day`
-      - [ ] `get_current_time`
-      - [ ] `convert_time_12hr`
-      - [ ] `convert_time_24hr`
+      - [X] `days_of_week`
+      - [X] `get_current_day`
+      - [X] `get_current_time`
+      - [X] `convert_time_12hr`
+      - [X] `convert_time_24hr`
 
 ## Utils
   - Add More Fields & Methods As Needed
@@ -33,17 +33,17 @@
 ## Medications
   1. Complete The Methods
 
-     - [ ] `get_meds_today`
-     - [ ] `get_current_meds`
-     - [ ] `get_meds_window`
+     - [X] `get_meds_today`
+     - [X] `get_current_meds`
+     - [X] `get_meds_window`
 
   2. Add Methods To
 
      - [X] `get_patient`
-     - [ ] `get_meds_hourly`
-     - [ ] `get_meds_by_minute`
-     - [ ] `get_meds_before`
-     - [ ] `get_meds_after`
+     - [X] `get_meds_hourly`
+     - [X] `get_meds_by_minute`
+     - [X] `get_meds_before`
+     - [X] `get_meds_after`
 
 ## Other Advancements
   1. - [ ] Color The Outputed Text For Better UI/UX
