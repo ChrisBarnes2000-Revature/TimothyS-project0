@@ -188,10 +188,15 @@ class TestMedReminder(unittest.TestCase):
 
         def test_get_current_meds(self):
             """
-            Summary Line
-            Extra Details
+            Test we get the correct list of meds from the given medlist provided a day & time (hour, minute) to index
             Params:
+                day     (str): A string representing the day of the week the user would like to check for medication on
+                hour    (int): An integer representing the hour in the day at which the user needs or expects to take meds
+                minute  (int): An integer representing the minute in the hour at which ...
             Return:
+                meds (list): A dic containing the meds to take in the given minute
+                    i.e if at dinner (1730 or 1800) you had to take 2 pill it may look like:
+                    { "Iron": "More Info To Come", "Zinc": "More Info To Come" }
             """
             pass
 
