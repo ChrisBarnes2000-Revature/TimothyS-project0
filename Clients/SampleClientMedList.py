@@ -12,11 +12,7 @@ MedList = {
         "0900": {},
         "1000": {},
         "1100": {},
-        "1200": {
-            "15": {},
-            "30": {"Multi-Vitamins": "More Info To Come"},
-            "45": {},
-        },
+        "1200": {"Multi-Vitamins": "More Info To Come"},
         "1300": {},
         "1400": {},
         "1500": {},

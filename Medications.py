@@ -1,67 +1,32 @@
+# Data Structures containing prescribed medications and their day and time to be taken (Time to take medication: Medications prescribed)
+# Moved To Clients.SampleMedList -->
+#       from Clients.SampleClientMedList import MedList
+#       from Clients.TimothyMedList import MedList
+#       from Clients.ChrisMedList import MedList
+
 from Clients.SampleClientMedList import MedList
-from Utils import Utils
 
 
-def get_patient(name: str):
-    """
-    Get the entire medlist of the given patient
-    Params:
-        name (str): A string representing the name of the patient in query
-    Return:
-        meds (dict): A dict of dicts containg the users medication used as --> meds[day][hour][minute] --> {"Multi-Vitamins": "More Info To Come"},
-    """
-    if name == "Grandma-Test":
-        from Clients.TestClients.Grandma import Grandma_MedList as MedList
-    elif name == "Father-Test":
-        from Clients.TestClients.Father import Father_MedList as MedList
-    elif name == "Lizzy-Test":
-        from Clients.TestClients.Lizzy import Lizzy_MedList as MedList
-    return MedList
+days_of_week = ["MONDAY", "TUSEDAY", "WEDNESDAY",
+                "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
 
 
-def get_meds_today(medlist: dict, day: str):
-    """
-    Get the patient's prescribed medications on a given day & time
-    Params:
-        medlist (dict): A dict of dicts containg the users medication used as --> meds[day][hour][minute] --> {"Multi-Vitamins": "More Info To Come"},
-        day      (str): A string representing the day of the week the user would like to check for medication on
-    Return:
-        meds    (list): A List containing the sub dicts of time of the given day
-    """
-    pass
+# def get_monday_meds(medlist):
+#     for hour in range(24):
+#         hour_24 = "0"+str(hour)+"00" if hour < 10 else str(hour)+"00"
+#         monday_meds_by_hour = medlist["MONDAY"][hour_24]
+#         print(f'The Time Is: {hour}, Take These Meds:\n{monday_meds_by_hour}')
 
 
-def get_current_meds(day: str, hour: int, minute: int):
-    """
-    Get the patient's prescribed medications on a given day & time
-    Params:
-        day     (str): A string representing the day of the week the user would like to check for medication on
-        hour    (int): An integer representing the hour in the day at which the user needs or expects to take meds
-        minute  (int): An integer representing the minute in the hour at which ...
-    Return:
-        meds   (dict): A dict containing the meds to take in the given minute
-    """
-    pass
+# def get_all_noon_and_midnight_meds(medlist):
+#     for day in days_of_week:
+#         noon_meds = medlist[day]["1200"]
+#         midnight_meds = medlist[day]["0000"]
+#         print(f'At Noon On {day} Take These Meds:\n{noon_meds}\n')
+#         print(f'At Midnight On {day} Take These Meds:\n{midnight_meds}\n')
 
 
-def get_meds_window(MedList, current_day, current_time, offset="0200"):
-    """
-    Because medications can still be taken "2 hours" before or after the planned time,
-        * we want it to display a dict containing the range of time "2 hours" before through "2 hours" after the inputted time
-        * we want it to display the "exact" time -- {hour}:{minute}
-    Example output is expected to be
-        Here's your meds for Monday at 1430 meds:{1230:{},1430: {"Multi-Vitamins": "More Info To Come"},1630: {}}
-        or
-        > Here's your meds for Monday at 1430
-        > meds: {
-        >   1030: {},
-        >   1230: {"Multi-Vitamins": "More Info To Come"},
-        >   1430: {}
-        > }
-    Params:
-        time    (str): A string representing the time of day the user would like to check for medication at
-        offset  (str): A string representing the number of hours to offset our acceptable list of current meds
-    Return:
-        meds   (list): A list of sub dicts within the time range of (XX time) before & after current time
-    """
-    pass
+# Function that returns the prescribed medications on the given day and time
+def get_meds(medlist, day, time):
+    # Returning prescribed medications to take on given time (fitting in time range of two hours before and after) and day
+    return medlist[day][time]
