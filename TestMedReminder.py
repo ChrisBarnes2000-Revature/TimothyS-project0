@@ -165,6 +165,24 @@ class TestMedReminder(unittest.TestCase):
             Return:
                 meds (dict): A dict of dicts containg the users medication used as --> meds[day][hour][minute] --> {"Multi-Vitamins": "More Info To Come"},
             """
+            print("Med List Test: Get Patient \t\t\t| Started")
+            # Test Case 1 -- Grandma
+            expexted_test_data = test_meds_1
+            our_method_results = Medications.get_patient(name="Grandma-Test")
+            error_message = f'Error Result are not what we want\nExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
+
+            # Test Case 2 -- Father
+            expexted_test_data = test_meds_2
+            our_method_results = Medications.get_patient(name="Father-Test")
+            error_message = f'Error Result are not what we want\nExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
+
+            # Test Case 3 -- Lizzy
+            expexted_test_data = test_meds_3
+            our_method_results = Medications.get_patient(name="Lizzy-Test")
+            error_message = f'Error Result are not what we want\nExpected: {expexted_test_data} | Actual: {our_method_results}'
+            self.assertDictEqual(our_method_results, expexted_test_data, error_message)
             print("Med List Test Method: Get Patient \t\t| Completed")
 
         def test_get_meds_today(self):
