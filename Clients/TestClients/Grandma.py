@@ -4,7 +4,11 @@ Grandma_MedList = {
     },
     "MONDAY": {
         "0600": {"pill_a": "More Info To Come"},
-        "1200": {"pill_b": "More Info To Come"},
+        "1200": {
+            "15": {},
+            "30": {"pill_b": "More Info To Come"},
+            "45": {}
+        },
         "1800": {"pill_c": "More Info To Come"}
     },
     "TUSEDAY": {
