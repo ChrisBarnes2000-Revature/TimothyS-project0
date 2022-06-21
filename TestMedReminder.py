@@ -135,10 +135,11 @@ class TestMedReminder(unittest.TestCase):
 
         def test_get_patient(self):
             """
-            Summary Line
-            Extra Details
+            Test we get the entire medlist of the given user
             Params:
+                name (str): A string representing the name of the patient in query
             Return:
+                meds (dict): A dict of dicts containg the users medication used as --> meds[day][hour][minute] --> {"Multi-Vitamins": "More Info To Come"},
             """
             pass
 
