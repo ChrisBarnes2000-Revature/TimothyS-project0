@@ -167,7 +167,7 @@ class TestMedReminder(unittest.TestCase):
                 medlist      (dict): A dict of dicts containg the users medication used as --> meds[day][hour][minute] --> {"Multi-Vitamins": "More Info To Come"},
                 day           (str): A string representing the day of the week the user would like to check for medication on
             Yield:
-                curr_hr_meds (list): A dic containing the meds to take in the given hour
+                meds         (dict): A dict containing the meds to take in the given hour
                     i.e if at midnight (0000) you had to take 3 pills it may look like:
                     { "Multi-Vitamins": "More Info To Come", "Iron": "More Info To Come", "Zinc": "More Info To Come" }
             """
@@ -180,7 +180,7 @@ class TestMedReminder(unittest.TestCase):
                 medlist      (dict): A dict of dicts containg the users medication used as --> meds[day][hour][minute] --> {"Multi-Vitamins": "More Info To Come"},
                 day           (str): A string representing the day of the week the user would like to check for medication on
             Yield:
-                curr_min_meds (list): A dic containing the meds to take in the given minute
+                meds         (dict): A dict containing the meds to take in the given minute
                     i.e if at lunch (1030 or 1230) you had to take 1 pill it may look like:
                     { "Multi-Vitamins": "More Info To Come" }
             """
@@ -194,7 +194,7 @@ class TestMedReminder(unittest.TestCase):
                 hour    (int): An integer representing the hour in the day at which the user needs or expects to take meds
                 minute  (int): An integer representing the minute in the hour at which ...
             Return:
-                meds (list): A dic containing the meds to take in the given minute
+                meds   (dict): A dict containing the meds to take in the given minute
                     i.e if at dinner (1730 or 1800) you had to take 2 pill it may look like:
                     { "Iron": "More Info To Come", "Zinc": "More Info To Come" }
             """
@@ -208,7 +208,7 @@ class TestMedReminder(unittest.TestCase):
                 time    (list): [hour: (int), minute, (int)] - Integer representing the hour & minute in the day at which the user needs or expects to take meds
                 offset   (int): An integer representing the number of hours to offset our acceptable list of current meds
             Return:
-                meds (list): A dic containing the meds to take in the given time frame (prior to current set)
+                meds    (dict): A dict containing the meds to take in the given time frame (prior to current set)
             """
             pass
 
@@ -220,7 +220,7 @@ class TestMedReminder(unittest.TestCase):
                 time    (list): [hour: (int), minute, (int)] - Integer representing the hour & minute in the day at which the user needs or expects to take meds
                 offset   (int): An integer representing the number of hours to offset our acceptable list of current meds
             Return:
-                meds (list): A dic containing the meds to take in the given time frame (after current set)
+                meds    (dict): A dict containing the meds to take in the given time frame (after current set)
             """
             pass
 
