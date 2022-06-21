@@ -109,10 +109,13 @@ class TestMedReminder(unittest.TestCase):
 
         def test_get_current_day(self):
             """
-            Summary Line
-            Extra Details
+            Test we get the corret response from user when requesting a day of the week
+            they are prompted "Please type the current day of the week: "
+            output is expected to be one of ["SUNDAY", "MONDAY", "TUSEDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
             Params:
+                day (str): string representing the day of the week the user would like to check for medication on
             Return:
+                day (str): ALL CAPS Version of the day provided by the user
             """
             pass
 
