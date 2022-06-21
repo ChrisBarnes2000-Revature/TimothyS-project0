@@ -1,3 +1,6 @@
+from random import random
+
+import Medications
 from Clients.SampleClientMedList import MedList
 from Utils import Utils
 
@@ -19,7 +22,7 @@ def get_patient(name: str):
     return MedList
 
 
-def get_meds_today(medlist: dict, day: str):
+def get_meds_today(medlist: dict, today: str):
     """
     Get the patient's prescribed medications on a given day & time
     Params:
@@ -28,10 +31,26 @@ def get_meds_today(medlist: dict, day: str):
     Return:
         meds    (list): A List containing the sub dicts of time of the given day
     """
-    pass
+    return medlist[today.upper()]
 
 
-def get_current_meds(day: str, hour: int, minute: int):
+def get_meds_hourly(today: str):
+    for hour in range(24):
+        hour_24 = "0"+str(hour)+"00" if hour < 10 else str(hour)+"00"
+        current_hour_meds = get_meds_today(today)[hour_24]
+        print(f'The Time Is: {hour}:{"00"}, Take These Meds:\n{current_hour_meds}')
+        yield current_hour_meds
+
+
+def get_meds_by_minute(today: str):
+    for minute in range(60):
+        current_hour = get_meds_hourly(today)
+        current_minute_meds = current_hour[minute]
+        print(f'The Time Is: {current_hour}:{minute}, Take These Meds:\n{current_minute_meds}')
+        yield current_minute_meds
+
+
+def get_current_meds(medlist: list, today: str, hour: int, minute: int = None):
     """
     Get the patient's prescribed medications on a given day & time
     Params:
@@ -41,10 +60,31 @@ def get_current_meds(day: str, hour: int, minute: int):
     Return:
         meds   (dict): A dict containing the meds to take in the given minute
     """
-    pass
+    return get_meds_today(medlist, today)[hour][minute] if minute != None else get_meds_today(medlist, today)[hour]
 
 
-def get_meds_window(MedList, current_day, current_time, offset="0200"):
+# hour = str(random.randint(0, 24)).ljust(4, "0")
+# minute = "00"  # str(random.randint(0, 60)).ljust(2, "0")
+
+# hour = "0"+str(hour)+str(minute) if hour < 10 else str(hour)+minute
+
+
+def get_meds_before(current: list, offset: int):
+    before_hrs = current[1] - offset
+    before_min = current[2] - offset
+    before_meds = get_current_meds(current[0], before_hrs, before_min)
+    return before_meds
+
+
+def get_meds_after(current: list, offset: int):
+    after_hrs = current[1] + offset
+    after_min = current[2] + offset
+    after_meds = get_current_meds(current[0], after_hrs, after_min)
+    return after_meds
+
+
+def get_meds_window(current: list, offset: int):
+    # def get_meds_window(MedList, current_day, current_time, offset="0200"):
     """
     Because medications can still be taken "2 hours" before or after the planned time,
         * we want it to display a dict containing the range of time "2 hours" before through "2 hours" after the inputted time
@@ -64,4 +104,33 @@ def get_meds_window(MedList, current_day, current_time, offset="0200"):
     Return:
         meds   (list): A list of sub dicts within the time range of (XX time) before & after current time
     """
-    pass
+    # current_time_plus_1 = str(int(current_time)+100)
+    # current_time_plus_2 = str(int(current_time)+200)
+
+    # current_time_minus_1 = str(int(current_time)-100)
+    # current_time_minus_2 = str(int(current_time)-200)
+
+    # # Searching for medications to be taken at inputted day and time
+    # print(f''''Here are your prescribed medications for {current_day} at {current_time}:
+    #     { Medications.get_meds(MedList, current_day, Utils["get_current_time_sub_12"](current_time_minus_2)) }
+    #     { Medications.get_meds(MedList, current_day, Utils["get_current_time_sub_12"](current_time_minus_1)) }
+
+    #     { Medications.get_meds(MedList, current_day, Utils["get_current_time_sub_12"](current_time)) }
+
+    #     { Medications.get_meds(MedList, current_day, Utils["get_current_time_sub_12"](current_time_plus_1)) }
+    #     { Medications.get_meds(MedList, current_day, Utils["get_current_time_sub_12"](current_time_plus_2)) }
+    # ''')
+    # current = ["day", "hour", "minute"]
+    before__meds = get_current_meds(current, offset)
+    current_meds = get_current_meds(current[0], current[1], current[2])
+    after___meds = get_current_meds(current, offset)
+    return before__meds, current_meds, after___meds
+
+
+def get_all_noon_and_midnight_meds(medlist):
+    for day in Utils["days_of_week"]:
+        noon_meds = medlist[day]["1200"]
+        midnight_meds = medlist[day]["0000"]
+        print(f'At Noon On {day} Take These Meds:\n{noon_meds}\n')
+        print(f'At Midnight On {day} Take These Meds:\n{midnight_meds}\n')
+        return midnight_meds, noon_meds
