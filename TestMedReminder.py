@@ -45,31 +45,37 @@ class TestMedReminder(unittest.TestCase):
 
     """ Example Medlist
     MedList: {
-        "SUNDAY": { "1200": {} },
+        "SUNDAY": { "1200": {}, },
         "MONDAY": {
-            "0600": {"pill_a": "More Info To Come"}
-            "1200": {"pill_b": "More Info To Come"}
-            "1800": {"pill_c": "More Info To Come"}
+            "0600": {"pill_a": "More Info To Come"},
+            "1200": {"pill_b": "More Info To Come"},
+            "1800": {"pill_c": "More Info To Come"},
         },
         "TUSEDAY": {
             "1200": {"Multi-Vitamins": "More Info To Come"},
-            "1800": {"Multi-Vitamins": "More Info To Come"}
+            "1800": {"Multi-Vitamins": "More Info To Come"},
         },
         "WEDNESDAY": {
-            "0600": {"pill_a": "More Info To Come"}
-            "1200": {"pill_b": "More Info To Come"}
-            "1800": {"pill_c": "More Info To Come"}
+            "0600": {"pill_a": "More Info To Come"},
+            "1200": {"pill_b": "More Info To Come"},
+            "1800": {"pill_c": "More Info To Come"},
         },
         "THURSDAY": {
             "1200": {"Multi-Vitamins": "More Info To Come"},
-            "1800": {"Multi-Vitamins": "More Info To Come"}
+            "1800": {"Multi-Vitamins": "More Info To Come"},
         },
         "FRIDAY": {
-            "0600": {"pill_a": "More Info To Come"}
-            "1200": {"pill_b": "More Info To Come"}
-            "1800": {"pill_c": "More Info To Come"}
+            "0600": {"pill_a": "More Info To Come"},
+            "1200": {"pill_b": "More Info To Come"},
+            "1800": {"pill_c": "More Info To Come"},
         },
-        "SATURDAY": { "1200": {} }
+        "SATURDAY": {
+            1200": {
+                "Multi-Vitamins": "More Info To Come",
+                "Iron": "More Info To Come",
+                "Zinc": "More Info To Come"
+            }
+        },
     }
     """
 
@@ -156,10 +162,14 @@ class TestMedReminder(unittest.TestCase):
 
         def test_get_meds_hourly(self):
             """
-            Summary Line
-            Extra Details
+            Test we get the correct list of meds from the given medlist provided a day to index
             Params:
-            Return:
+                medlist      (dict): A dict of dicts containg the users medication used as --> meds[day][hour][minute] --> {"Multi-Vitamins": "More Info To Come"},
+                day           (str): A string representing the day of the week the user would like to check for medication on
+            Yield:
+                curr_hr_meds (list): A dic containing the meds to take in the given hour
+                    i.e if at midnight (0000) you had to take 3 pills it may look like:
+                    { "Multi-Vitamins": "More Info To Come", "Iron": "More Info To Come", "Zinc": "More Info To Come" }
             """
             pass
 
