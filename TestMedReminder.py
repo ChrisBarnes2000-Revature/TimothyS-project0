@@ -121,10 +121,13 @@ class TestMedReminder(unittest.TestCase):
 
         def test_get_current_time(self):
             """
-            Summary Line
-            Extra Details
+            Test we get the corret response from user when requesting a time of day
+            they are prompted "Please enter the current time in 24-hour format(0000-2359): "
+            output is expected to be one of ["0000", "0100", 0200", ..., "2100", "2200", "2300"]
             Params:
+                time (str): string representing the time of day the user would like to check for medication at
             Return:
+                time (str): string version of verified number in range of the 24 hour clock
             """
             pass
 
